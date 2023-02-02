@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
+import code from '../images/carbon.png'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -9,7 +10,9 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
-      <div className='flex text-white  p-8 justify-evenly'>
+    <div className='flex flex-col items-center'>
+
+      <div className='flex text-white  p-8 justify-evenly m-8'>
         <div className='w-6/12'>
           <div className='text-lg'>
           
@@ -40,7 +43,22 @@ export default function Home() {
           <img src='https://i0.wp.com/www.fegno.com/wp-content/uploads/2022/03/web-development-company-in-kochi.gif' alt="" />
           
         </div>
+        
       </div>
+
+        <div className='text-white m-4'>
+          <h1> Overview About Me</h1>
+      </div>
+      <div className='m-4'>
+       <Image
+        src={code}
+        width={1500}
+        height={1500}
+        
+       />
+      </div>
+      
+    </div>
     </>
   )
 }
