@@ -8,7 +8,10 @@ module.exports = {
   theme: {
     fontSize: {
       'xl': ['1.5rem'],
+      'lg': ['1.2em'],
       '2xl': ['3rem'],
+      
+      
     }
   },
   plugins: [],
