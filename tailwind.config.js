@@ -12,7 +12,16 @@ module.exports = {
       '2xl': ['3rem'],
       
       
+    },
+     
+    extend: {
+      width: {
+        '100': '28rem',
+        '101': '28.5rem',
+      }
     }
+    
   },
+ 
   plugins: [],
 }

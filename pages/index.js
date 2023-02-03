@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.css'
 import code from '../images/carbon.png'
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -12,9 +13,9 @@ export default function Home() {
     <>
     <div className='flex flex-col items-center'>
 
-      <div className='flex text-white  p-8 justify-evenly m-8'>
-        <div className='w-6/12'>
-          <div className='text-lg'>
+        <div className='flex flex-col items-center xl:flex-row text-white  p-8 justify-evenly m-4'>
+        <div className='flex flex-col w-full md:w-9/12 xl:w-6/12 xl:items-start'>
+          <div className='text-md sm:text-lg'>
           
               <h1>
 
@@ -22,7 +23,7 @@ export default function Home() {
               </h1>
             
           </div>
-          <div className='text-lg'>
+          <div className='text-sm xl:text-lg'>
           
               <h1>
 
@@ -46,7 +47,7 @@ export default function Home() {
         
       </div>
 
-        <div className='text-white m-4'>
+        <div className='text-white '>
           <h1> Overview About Me</h1>
       </div>
       <div className='m-4'>

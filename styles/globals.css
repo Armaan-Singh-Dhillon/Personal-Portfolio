@@ -6,7 +6,7 @@
   padding:1.2rem;
    
   background-image: url('../images/main-background.jpg'); 
-  background-repeat: no-repeat;
+ 
   background-size: cover;
   
 }
@@ -18,4 +18,15 @@ h1{
 }
 p{
   font-size:1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size:1.5rem;
+  
+  }
+  p{
+  font-size:1rem;
+}
+
 }

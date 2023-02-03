@@ -7,6 +7,7 @@ import { AiFillInstagram } from 'react-icons/ai';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { AiOutlineBars } from 'react-icons/ai';
 import { useState } from 'react';
+import Link from 'next/link';
 
 const Navbar = () => {
     const [show , setShow]=useState(false)
@@ -16,12 +17,12 @@ const Navbar = () => {
     }
   return <>
       <div className="text-white flex justify-evenly ">
-        <div className='text-md sm:text-xl items-center lg:text-wxl'>
+        <div className='text-md sm:text-xl items-center lg:text-2xl'>
               <div className='animate-bounce inline-block '> &lt;/&gt; </div>  Armaan
              
         </div>
 
-          <div className=" hidden text-sm sm:hidden md:flex justify-evenly  w-6/12 items-center">
+          <div className=" hidden text-sm sm:hidden md:flex justify-evenly  w-6/12 items-center text-xl">
             <div>
                 Home
             </div>
@@ -38,9 +39,13 @@ const Navbar = () => {
                 Contact
             </div>
         </div>
-        <div className='hidden sm:flex items-center justify-evenly w-2/12 text-lg'>
+        <div className='hidden w-4/12 sm:flex items-center justify-evenly sm:w-2/12 text-xl'>
+              <Link href='https://www.linkedin.com/in/armaan-dhillon-9946b3251/' target="_blank">
               <AiFillLinkedin></AiFillLinkedin>
-              <AiFillGithub></AiFillGithub>
+            </Link>
+              <Link href='https://github.com/Armaan-Singh-Dhillon' target="_blank">
+              <AiFillGithub ></AiFillGithub>
+              </Link>
               <AiOutlineMail></AiOutlineMail>
               <AiFillInstagram></AiFillInstagram>
         </div>
