@@ -24,16 +24,22 @@ const Navbar = () => {
 
           <div className=" hidden text-sm sm:hidden md:flex justify-evenly  w-6/12 items-center text-xl">
             <div>
+                <Link href='/'>
                 Home
+                </Link>
             </div>
             <div>
+                <Link href='/about'>
                 About
+                </Link>
             </div>
             <div>
                 Work
             </div>
             <div>
+                <Link href='/skills'>
                 Skills
+                </Link>
             </div>
             <div>
                 Contact

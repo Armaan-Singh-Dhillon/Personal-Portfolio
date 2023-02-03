@@ -88,7 +88,11 @@ const About = () => {
                             The Sirsa School , Sirsa-125055 | Haryana
                             <div className='flex items-center'>
                                 <MdOutlineKeyboardArrowRight></MdOutlineKeyboardArrowRight> 10+2
+                                
+                            </div>
+                            <div className='flex items-center'>
                                 <MdOutlineKeyboardArrowRight></MdOutlineKeyboardArrowRight> 97%
+                                
                             </div>
                         </div>
                     </div>
