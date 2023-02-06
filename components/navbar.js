@@ -42,7 +42,9 @@ const Navbar = () => {
                 </Link>
             </div>
             <div>
+                <Link href='/contact'>
                 Contact
+                </Link>
             </div>
         </div>
         <div className='hidden w-4/12 sm:flex items-center justify-evenly sm:w-2/12 text-xl'>
