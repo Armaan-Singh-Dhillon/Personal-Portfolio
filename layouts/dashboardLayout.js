@@ -11,15 +11,15 @@ const DashboardLayout = ({ children }) => {
 
     return (
         <>
-            <div className="flex flex-col items-center bg-white bg-opacity-25 ">
+            <div className="flex flex-col items-center bg-white bg-opacity-25 text-white">
 
                 <div className="text-white text-2xl  ">
                     Dashboard
                 </div>
 
-                <div className="flex w-full justify-between h-96">
+                <div className="flex w-full justify-between ">
 
-                    <div className="w-2/12 bg-blue-200 p-2 text-xl">
+                    <div className="w-2/12  p-2 text-xl">
                         <div className="p-2">
                             <div className="flex items-center">
 
@@ -60,7 +60,7 @@ const DashboardLayout = ({ children }) => {
                         </div>
                     </div> 
 
-                    <div className="w-10/12 bg-red-200 p-2">
+                    <div className="w-10/12  p-2">
                         {children}
                     </div>
                 </div>

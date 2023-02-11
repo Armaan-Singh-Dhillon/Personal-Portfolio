@@ -11,6 +11,5 @@ const skillSchema = new mongoose.Schema({
     }
 });
 
-const Skills = mongoose.model('Skills', ItemSchema);
 
-export default Skills
+export default skillSchema
