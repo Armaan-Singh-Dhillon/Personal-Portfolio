@@ -18,9 +18,33 @@ import ftter from '../images/svg/flutter.svg'
 import boots from '../images/svg/bootstrap.svg'
 import exp from '../images/svg/express.svg'
 import Image from 'next/image'
-const Skills = () => {
+import axios from 'axios'
+const Skills = ({ res }) => {
+  console.log(res)
   return (
     <>
+      <div className='text-white flex justify-evenly m-4'>
+       <h1>
+         Languages Fetched
+        </h1>
+
+        {res.map((el)=>{
+          return <div className='skills-images text-white text-xl flex flex-col items-center'>
+            
+            <Image
+              src={`/img/skills/${el.photo}`}
+
+              width={200}
+              height={200}
+            />
+            {/* <img src={`../public/img/skills/${el.photo}`} alt="" /> */}
+            {el.name}
+          </div>
+        })}
+        
+      </div>
+
+
       <div className='text-white flex justify-evenly m-4'>
         <h1>Languages Known:</h1>
       </div>
@@ -29,16 +53,16 @@ const Skills = () => {
 
           <Image
             src={py}
- 
+
 
           />
-         Python
+          Python
         </div>
         <div className='skills-images text-white text-xl flex flex-col items-center'>
 
           <Image
             src={ja}
- 
+
 
           />
           Java
@@ -47,7 +71,7 @@ const Skills = () => {
 
           <Image
             src={ts}
- 
+
 
           />
           Typescript
@@ -56,7 +80,7 @@ const Skills = () => {
 
           <Image
             src={c}
- 
+
 
           />
           C++
@@ -65,7 +89,7 @@ const Skills = () => {
 
           <Image
             src={ht}
- 
+
 
           />
           Html
@@ -74,7 +98,7 @@ const Skills = () => {
 
           <Image
             src={js}
- 
+
 
           />
           Javascript
@@ -83,16 +107,16 @@ const Skills = () => {
 
           <Image
             src={cs}
- 
+
 
           />
           Css
         </div>
       </div>
-      
+
       <div className='text-white flex justify-evenly m-4'>
         <h1>Frameworks Known:</h1>
-        
+
       </div>
       <div className='flex items-center justify-evenly flex-wrap p-8'>
         <div className='skills-images text-white text-xl flex flex-col items-center'>
@@ -120,7 +144,7 @@ const Skills = () => {
 
 
           />
-          
+
 
         </div>
         <div className='skills-images text-white text-xl flex flex-col items-center'>
@@ -157,7 +181,7 @@ const Skills = () => {
 
 
           />
-         
+
 
         </div>
         <div className='skills-images text-white text-xl flex flex-col items-center'>
@@ -204,4 +228,14 @@ const Skills = () => {
   )
 }
 
+export async function getServerSideProps(context) {
+
+  const { data } = await axios.get('http://localhost:3000/api/skills/getAll')
+
+  const res = data.data
+
+  return {
+    props: { res },
+  }
+}
 export default Skills

@@ -15,7 +15,15 @@ const AddSkill = () => {
     };
     const submitHandler =async(e)=>{
         e.preventDefault()
-        const data = await axios.post('/api/skills/create',{name})
+        const form =new FormData()
+        form.append('name',name)
+        form.append('photo',file)
+        const data = await axios({
+            method: "post",
+            url: "/api/skills/create",
+            data: form,
+            headers: { "Content-Type": "multipart/form-data" },
+        })
     }
 
     return (
@@ -51,7 +59,9 @@ const AddSkill = () => {
                             <input
                                 className="border border-gray-400 p-2 w-full"
                                 type="file"
-                                id="file"
+                                accept="image/"
+                                id="photo"
+                                name='photo'
                                 onChange={handleFileChange}
                             />
                         </div>
