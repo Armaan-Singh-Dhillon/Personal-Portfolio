@@ -1,10 +1,12 @@
 import DashboardLayout from "@/layouts/dashboardLayout"
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from 'next/router';
 
 const AddSkill = () => {
     const [name, setName] = useState("");
     const [file, setFile] = useState(null);
+    const router = useRouter();
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -16,6 +18,7 @@ const AddSkill = () => {
     const submitHandler =async(e)=>{
         e.preventDefault()
         const form =new FormData()
+
         form.append('name',name)
         form.append('photo',file)
         const data = await axios({
@@ -24,6 +27,8 @@ const AddSkill = () => {
             data: form,
             headers: { "Content-Type": "multipart/form-data" },
         })
+       
+
     }
 
     return (

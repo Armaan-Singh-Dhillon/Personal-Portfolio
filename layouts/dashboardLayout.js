@@ -41,7 +41,9 @@ const DashboardLayout = ({ children }) => {
                                     Edit Skills
                                 </div>
                                 <div className="m-2">
+                                    <Link href='/dashboard/skills/deleteSkill'>
                                     delete Skills
+                                    </Link>
                                 </div>
                                 <div className="m-2">
                                     <Link href='/dashboard/skills/addSkill'>
