@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }) => {
 
     return (
         <>
-            <div className="flex flex-col items-center bg-white bg-opacity-25 text-white">
+            <div className="flex flex-col items-center bg-white bg-opacity-20 text-white">
 
                 <div className="text-white text-2xl  ">
                     Dashboard
@@ -24,7 +24,9 @@ const DashboardLayout = ({ children }) => {
                             <div className="flex items-center">
 
                                 <IoMdArrowDropright className=" text-[1.5rem] "></IoMdArrowDropright>
+                                <Link href='/dashboard/messages'>
                             Messages
+                                </Link>
                             </div>
                         </div>
                         <div className="p-2">
