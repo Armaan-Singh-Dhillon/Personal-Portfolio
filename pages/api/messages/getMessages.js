@@ -1,7 +1,7 @@
 import messageSchema from '../../../server/models/messages.js'
 import mongoose from 'mongoose';
 import nextConnect from 'next-connect';
-
+import verifyToken from '@/server/verifyToken.js';
 
 
 const apiRoute = nextConnect({
@@ -11,6 +11,7 @@ const apiRoute = nextConnect({
     },
 });
 
+apiRoute.use(verifyToken);
 
 apiRoute.get(async (req, res) => {
 

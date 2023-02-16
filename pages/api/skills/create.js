@@ -2,7 +2,7 @@ import skillSchema from '../../../server/models/skillModel.js';
 import mongoose from 'mongoose';
 import nextConnect from 'next-connect';
 import multer from 'multer';
-
+import verifyToken from '../../../server/verifyToken.js'
 const multerStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'public/img/skills')
@@ -36,6 +36,7 @@ const apiRoute = nextConnect({
     },
 });
 
+apiRoute.use(verifyToken);
 apiRoute.use(uploadMiddleware);
 
 
