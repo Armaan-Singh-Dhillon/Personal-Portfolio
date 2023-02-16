@@ -4,15 +4,23 @@ import axios from "axios";
 import Image from "next/image";
 import { ImBin2 } from 'react-icons/im';
 import { useRouter } from 'next/router';
+import { useContext } from "react";
+import { MyContext } from "@/Context/Context";
 
 const AddSkill = ({ res }) => {
+
+    const { setState, state } = useContext(MyContext);
    
     const router = useRouter();
     const eventHandler = async(e) => {
 
         const name = e.target.value
         
-        await axios.delete('http://localhost:3000/api/skills/delete', { data: name })
+        await axios.delete('http://localhost:3000/api/skills/delete', { data: name }, {
+            headers: {
+                'Authorization': state.token
+            }
+        })
         router.replace(router.asPath);
      
     }

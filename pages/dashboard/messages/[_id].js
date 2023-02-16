@@ -1,8 +1,14 @@
-import { useRouter } from 'next/router'
+
 import DashboardLayout from '../../../layouts/dashboardLayout.js'
+
+
+import { useContext } from "react";
+import { MyContext } from "@/Context/Context";
+
 import axios from 'axios'
 const Post = ({res}) => {
    
+    const { setState, state } = useContext(MyContext);
 
     const timestamp = res.timestamp;
     const date = new Date(timestamp);
@@ -34,7 +40,11 @@ const Post = ({res}) => {
 export async function getServerSideProps(context) {
     const {_id} =context.params
     
-    const { data } = await axios.post('http://localhost:3000/api/messages/getMessageById',{_id})
+    const { data } = await axios.post('http://localhost:3000/api/messages/getMessageById', { _id }, {
+        headers: {
+            'Authorization': state.token
+        }
+    })
 
     const res = data.data
 

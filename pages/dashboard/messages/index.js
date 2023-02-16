@@ -47,7 +47,10 @@ const Message = ({res}) => {
 }
 export async function getServerSideProps(context) {
 
-    const { data } = await axios.get('http://localhost:3000/api/messages/getMessages')
+    const { data } = await axios.get('http://localhost:3000/api/messages/getMessages', {
+        headers: {
+            'Authorization': state.token
+        }})
 
     const res = data.data
 
