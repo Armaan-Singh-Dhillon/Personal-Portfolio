@@ -2,8 +2,17 @@ import axios from "axios"
 import DashboardLayout from '../../../layouts/dashboardLayout.js'
 import { AiOutlineStar } from 'react-icons/ai';
 import Link from "next/link.js";
-
+import { useRouter } from 'next/router';
+import { useContext } from "react";
+import { MyContext } from "@/Context/Context";
+import { useEffect } from 'react'
 const Message = ({res}) => {
+    const { setState, state } = useContext(MyContext);
+    useEffect(() => {
+        if (!state.token) {
+            router.push('/admin')
+        }
+    }, [state])
   return (
       <div className=" p-2 m-4 text-xl ">
         {res.map((el)=>{

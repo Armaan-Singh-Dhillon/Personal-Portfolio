@@ -228,7 +228,7 @@ const Skills = ({ res }) => {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
   const { data } = await axios.get('http://localhost:3000/api/skills/getAll')
 

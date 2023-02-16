@@ -1,22 +1,35 @@
-
+import { useContext, useEffect } from 'react';
+import { MyContext } from '@/Context/Context.js';
 import { useState } from "react"
 import { useRouter } from 'next/router'
 import axios from "axios"
 
 
 const Admin = () => {
+  const { setState ,state } = useContext(MyContext);
+
+  
   const router = useRouter()
  
   const [email,setEmail]=useState('')
   const [password,setPassword] = useState('')
+
+  useEffect(()=>{
+    if(state.token){
+      router.push('/dashboard')
+
+    }
+  })
  
   const handleSubmit=async(e)=>{
    
     const {data} = await axios.post('/api/admin',{plainEmail:email , plainPassword : password})
     const {token} = data
-    if(token){
 
-      localStorage.setItem('token',token)
+    if(token){
+      localStorage.setItem('token', token)
+      setState({ ...state, token: token })
+       
       router.push('/dashboard')
 
     }

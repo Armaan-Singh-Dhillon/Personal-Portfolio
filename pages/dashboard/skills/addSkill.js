@@ -1,12 +1,18 @@
-import DashboardLayout from "@/layouts/dashboardLayout"
-import { useState } from "react";
+import DashboardLayout from "../../../layouts/dashboardLayout.js"
+
+import {  useEffect, useState } from "react";
+
 import axios from "axios";
 import { useRouter } from 'next/router';
+import { useContext } from "react";
+import { MyContext } from "@/Context/Context";
 
 const AddSkill = () => {
+    const { setState, state } = useContext(MyContext);
     const [name, setName] = useState("");
     const [file, setFile] = useState(null);
     const router = useRouter();
+
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -30,6 +36,14 @@ const AddSkill = () => {
        
 
     }
+       
+    useEffect(()=>{
+        if(!state.token){
+            router.push('/admin')
+        }
+
+    },[state])
+    
 
     return (
         <>

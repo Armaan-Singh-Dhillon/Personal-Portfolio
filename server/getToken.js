@@ -6,6 +6,7 @@ export default function verifyToken(ctx) {
         token = ctx.req.headers.cookie?.split('token=')[1];
     } else {
         token = localStorage.getItem('token');
+        return token
     }
 
     if (!token) {
