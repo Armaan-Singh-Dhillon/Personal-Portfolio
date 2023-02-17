@@ -6,7 +6,7 @@ import { MyContext } from "@/Context/Context";
 
 export default function index(){
   const { setState, state } = useContext(MyContext);
-  
+  const router = useRouter()
     useEffect(()=>{
       if (!state.token) {
         router.push('/admin')

@@ -31,7 +31,7 @@ const AddSkill = () => {
             method: "post",
             url: "/api/skills/create",
             data: form,
-            headers: { "Content-Type": "multipart/form-data", 'Authorization': state.token },
+            headers: { "Content-Type": "multipart/form-data", 'Authorization': `Bearer ${state.token}` },
         })
        
 

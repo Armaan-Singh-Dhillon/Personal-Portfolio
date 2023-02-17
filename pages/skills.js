@@ -19,8 +19,11 @@ import boots from '../images/svg/bootstrap.svg'
 import exp from '../images/svg/express.svg'
 import Image from 'next/image'
 import axios from 'axios'
+
 const Skills = ({ res }) => {
-  console.log(res)
+  
+
+
   return (
     <>
       <div className='text-white flex justify-evenly m-4'>
@@ -229,6 +232,7 @@ const Skills = ({ res }) => {
 }
 
 export async function getStaticProps(context) {
+
 
   const { data } = await axios.get('http://localhost:3000/api/skills/getAll')
 

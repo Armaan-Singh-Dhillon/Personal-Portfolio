@@ -1,7 +1,7 @@
 import skillSchema from '../../../server/models/skillModel.js';
 import mongoose from 'mongoose';
 import nextConnect from 'next-connect';
-import verifyToken from '@/server/verifyToken.js';
+
 
 
 const apiRoute = nextConnect({
@@ -10,7 +10,7 @@ const apiRoute = nextConnect({
         res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
     },
 });
-apiRoute.use(verifyToken);
+
 
 apiRoute.get(async (req, res) => {
 

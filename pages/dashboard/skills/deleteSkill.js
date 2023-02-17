@@ -18,7 +18,7 @@ const AddSkill = ({ res }) => {
         
         await axios.delete('http://localhost:3000/api/skills/delete', { data: name }, {
             headers: {
-                'Authorization': state.token
+                'Authorization': `Bearer ${state.token}`
             }
         })
         router.replace(router.asPath);
