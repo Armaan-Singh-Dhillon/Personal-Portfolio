@@ -22,7 +22,7 @@ apiRoute.delete(async (req, res) => {
         await mongoose.connect(process.env.MONGODB_URI)
 
 
-        const data = await Skill.deleteOne({name:req.body});
+        const data = await Skill.deleteOne({name:req.body.name});
         res.status(201).json({
             message:"Deleted Successfully"
         })

@@ -58,7 +58,7 @@ const DeleteFrameWork = () => {
             <>
                
 
-                    <div className="bg-blue-400 flex justify-start flex-wrap p-4">
+                    <div className=" flex justify-start flex-wrap p-4">
                         {res.map((el) => {
 
                             return <div className="flex flex-col items-center m-8 bg-white text-black p-4 text-lg">

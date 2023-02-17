@@ -7,21 +7,39 @@ import { useRouter } from 'next/router';
 import { useContext } from "react";
 import { MyContext } from "@/Context/Context";
 
-const DeleteSkill = ({ res }) => {
+const DeleteSkill = () => {
 
     const { setState, state } = useContext(MyContext);
-   
-    const router = useRouter();
+    const [res, setRes] = useState([])
+    const router =useRouter()
+    const fetchData = async () => {
+        const { data } = await axios.get('http://localhost:3000/api/skills/getAll')
+
+        setRes(data.data)
+
+
+    }
+
+
+    useEffect(() => {
+        fetchData()
+        if (!state.token) {
+            router.push('/admin')
+        }
+    }, [res])
     const eventHandler = async(e) => {
 
         const name = e.target.value
         
-        await axios.delete('http://localhost:3000/api/skills/delete', { data: name }, {
+        await axios.delete('http://localhost:3000/api/skills/delete', {
             headers: {
-                'Authorization': `Bearer ${state.token}`
+                Authorization: `Bearer ${state.token}`
+            },
+            data: {
+                name
             }
         })
-        router.replace(router.asPath);
+        fetchData()
      
     }
 
@@ -53,16 +71,6 @@ const DeleteSkill = ({ res }) => {
             </div>
         </>
     )
-}
-export async function getServerSideProps(context) {
-
-    const { data } = await axios.get('http://localhost:3000/api/skills/getAll')
-
-    const res = data.data
-
-    return {
-        props: { res },
-    }
 }
 export default DeleteSkill
 
