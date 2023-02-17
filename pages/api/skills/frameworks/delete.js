@@ -1,7 +1,7 @@
-import skillSchema from '../../../server/models/skillModel.js';
+import frameWorkSchema from '@/server/models/Frameworks.js';
 import mongoose from 'mongoose';
 import nextConnect from 'next-connect';
-import verifyToken from '../../../server/verifyToken.js';
+import verifyToken from '@/server/verifyToken';
 
 
 const apiRoute = nextConnect({
@@ -14,17 +14,17 @@ apiRoute.use(verifyToken);
 
 apiRoute.delete(async (req, res) => {
 
-    
-    const Skill = mongoose.models.Skills || mongoose.model('Skills', skillSchema);
+     
+    const Frameworks = mongoose.models.Frameworks || mongoose.model('Frameworks', frameWorkSchema);
 
     try {
 
         await mongoose.connect(process.env.MONGODB_URI)
 
 
-        const data = await Skill.deleteOne({name:req.body});
+        const data = await Frameworks.deleteOne({ name: req.body.name });
         res.status(201).json({
-            message:"Deleted Successfully"
+            message: "Deleted Successfully"
         })
 
     }

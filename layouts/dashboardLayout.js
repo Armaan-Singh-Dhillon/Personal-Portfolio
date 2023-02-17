@@ -2,11 +2,16 @@ import { useState } from "react"
 import { IoMdArrowDropright } from 'react-icons/io';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import Link from "next/link";
+import {motion} from 'framer-motion'
 const DashboardLayout = ({ children }) => {
-    const [skillToggle,setSkillToggle]=useState(false)
+    const [skillToggle, setSkillToggle] = useState(false)
+    const [frameToggle, setFrameToggle] = useState(false)
 
-    const skillHandler =()=>{
+    const skillHandler = () => {
         setSkillToggle(!skillToggle)
+    }
+    const frameHandler = () => {
+        setFrameToggle(!frameToggle)
     }
 
     return (
@@ -25,7 +30,7 @@ const DashboardLayout = ({ children }) => {
 
                                 <IoMdArrowDropright className=" text-[1.5rem] "></IoMdArrowDropright>
                                 <Link href='/dashboard/messages'>
-                            Messages
+                                    Messages
                                 </Link>
                             </div>
                         </div>
@@ -38,23 +43,44 @@ const DashboardLayout = ({ children }) => {
                                     Skills
                                 </div>
                             </button>
-                            {skillToggle && <div className="p-2 text-[1.2rem]">
-                                <div className="m-2">
-                                    Edit Skills
-                                </div>
+                            {skillToggle && <motion.div className="p-2 text-[1.2rem]" initial={{ opacity: 0  }} animate={{ opacity: 1 }} transition={{ ease: "easeOut", duration: 2 }}>
+
                                 <div className="m-2">
                                     <Link href='/dashboard/skills/deleteSkill'>
-                                    delete Skills
+                                        delete Skills
                                     </Link>
                                 </div>
                                 <div className="m-2">
                                     <Link href='/dashboard/skills/addSkill'>
-                                    add Skills
+                                        add Skills
                                     </Link>
                                 </div>
-                            </div>}
-                            
+                            </motion.div>}
+
+
                         </div >
+                        <div className="p-2">
+                            <button onClick={frameHandler}>
+                                <div className="flex items-center">
+
+                                    {frameToggle ? <IoMdArrowDropdown className=" text-[1.5rem] "></IoMdArrowDropdown> : <IoMdArrowDropright className=" text-[1.5rem] "></IoMdArrowDropright>}
+                                    Frameworks
+                                </div>
+                            </button>
+                            {frameToggle && <motion.div className="p-2 text-[1.2rem]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ ease: "easeOut", duration: 2 }} >
+
+                                <div className="m-2">
+                                    <Link href='/dashboard/frameworks/delete'>
+                                        delete Frameworks
+                                    </Link>
+                                </div>
+                                <div className="m-2">
+                                    <Link href='/dashboard/frameworks/add'>
+                                        add Frameworks
+                                    </Link>
+                                </div>
+                            </motion.div>}
+                        </div>
                         <div className="p-2">
                             <div className="flex items-center">
 
@@ -62,7 +88,7 @@ const DashboardLayout = ({ children }) => {
                                 Work
                             </div>
                         </div>
-                    </div> 
+                    </div>
 
                     <div className="w-10/12  p-2">
                         {children}

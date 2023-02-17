@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useContext } from "react";
 import { MyContext } from "@/Context/Context";
 
-const AddSkill = ({ res }) => {
+const DeleteSkill = ({ res }) => {
 
     const { setState, state } = useContext(MyContext);
    
@@ -64,7 +64,7 @@ export async function getServerSideProps(context) {
         props: { res },
     }
 }
-export default AddSkill
+export default DeleteSkill
 
 
-AddSkill.Layout = DashboardLayout
+DeleteSkill.Layout = DashboardLayout
