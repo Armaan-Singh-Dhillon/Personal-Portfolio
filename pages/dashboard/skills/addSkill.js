@@ -6,11 +6,13 @@ import axios from "axios";
 import { useRouter } from 'next/router';
 import { useContext } from "react";
 import { MyContext } from "@/Context/Context";
+import Alert from "@/components/Alert.js";
 
 const AddSkill = () => {
     const { setState, state } = useContext(MyContext);
     const [name, setName] = useState("");
     const [file, setFile] = useState(null);
+    const [alert ,setAlert] =useState(false)
     const router = useRouter();
 
 
@@ -33,7 +35,11 @@ const AddSkill = () => {
             data: form,
             headers: { "Content-Type": "multipart/form-data", 'Authorization': `Bearer ${state.token}` },
         })
-       
+        setAlert(true)
+        setTimeout(() => {
+            setAlert(false)
+            
+        }, 3000);
 
     }
        
@@ -46,12 +52,17 @@ const AddSkill = () => {
     
 
     return (
-        <>
+        <> 
+
             <div className=" flex justify-evenly h-96 items-center ">
                 <div className="w-6/12">
 
+                    {alert && <div className="animate-pulse"
+                       >
 
-
+                   <Alert type={'success'} message={'Skill added successfully'}></Alert>
+                   </div>
+                   }
                     <form className="bg-white p-6 rounded-lg shadow-md text-black">
                         <div className="mb-4">
                             <label
@@ -95,6 +106,7 @@ const AddSkill = () => {
 
                 </div>
             </div>
+            
         </>
     )
 }

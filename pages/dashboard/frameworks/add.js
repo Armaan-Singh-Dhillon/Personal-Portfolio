@@ -6,9 +6,10 @@ import axios from "axios";
 import { useRouter } from 'next/router';
 import { useContext } from "react";
 import { MyContext } from "@/Context/Context";
-
+import Alert from "@/components/Alert.js";
 const AddFramework = () => {
     const { setState, state } = useContext(MyContext);
+    const [alert, setAlert] = useState(false)
     const [name, setName] = useState("");
     const [file, setFile] = useState(null);
     const router = useRouter();
@@ -34,6 +35,12 @@ const AddFramework = () => {
             headers: { "Content-Type": "multipart/form-data", 'Authorization': `Bearer ${state.token}` },
         })
 
+        setAlert(true)
+        setTimeout(() => {
+            setAlert(false)
+
+        }, 3000);
+
 
     }
 
@@ -50,7 +57,12 @@ const AddFramework = () => {
             <div className=" flex justify-evenly h-96 items-center ">
                 <div className="w-6/12">
 
+                    {alert && <div className="animate-pulse"
+                    >
 
+                        <Alert type={'success'} message={'Framework added successfully'}></Alert>
+                    </div>
+                    }
 
                     <form className="bg-white p-6 rounded-lg shadow-md text-black">
                         <div className="mb-4">

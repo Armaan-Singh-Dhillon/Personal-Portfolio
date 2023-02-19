@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import logo from '../images/Capture.PNG'
+
 import { AiFillLinkedin } from 'react-icons/ai';
 import { AiFillGithub } from 'react-icons/ai';
 import { AiOutlineMail } from 'react-icons/ai';

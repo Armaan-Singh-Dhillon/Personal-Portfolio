@@ -6,16 +6,20 @@ import { ImBin2 } from 'react-icons/im';
 import { useRouter } from 'next/router';
 import { useContext } from "react";
 import { MyContext } from "@/Context/Context";
+import Alert from '@/components/Alert.js';
 
 const DeleteSkill = () => {
 
     const { setState, state } = useContext(MyContext);
     const [res, setRes] = useState([])
+    const [alert, setAlert] = useState(false)
     const router =useRouter()
     const fetchData = async () => {
         const { data } = await axios.get('http://localhost:3000/api/skills/getAll')
 
         setRes(data.data)
+        
+
 
 
     }
@@ -39,6 +43,12 @@ const DeleteSkill = () => {
                 name
             }
         })
+
+        setAlert(true)
+        setTimeout(() => {
+            setAlert(false)
+
+        }, 2000);
         fetchData()
      
     }
@@ -47,7 +57,15 @@ const DeleteSkill = () => {
 
     return (
         <>
+            {
+                alert && <div className="animate-pulse"
+                >
+
+                    <Alert type={'Danger'} message={'Skill Deleted successfully'}></Alert>
+                </div>
+            }
             <div className="bg-blue-400 flex justify-start flex-wrap p-4">
+                
                 {res.map((el) => {
 
                     return <div className="flex flex-col items-center m-8 bg-white text-black p-4 text-lg">

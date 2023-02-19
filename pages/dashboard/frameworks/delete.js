@@ -6,12 +6,13 @@ import { ImBin2 } from 'react-icons/im';
 import { useRouter } from 'next/router';
 import { useContext } from "react";
 import { MyContext } from "@/Context/Context";
-
+import Alert from "@/components/Alert";
 
 const DeleteFrameWork = () => {
 
     const { setState, state } = useContext(MyContext);
     const [res, setRes] = useState([])
+    const [alert, setAlert] = useState(false)
     const fetchData = async () => {
         const { data } = await axios.get('http://localhost:3000/api/skills/frameworks/getAll')
 
@@ -43,6 +44,11 @@ const DeleteFrameWork = () => {
                 name
             }
         })
+        setAlert(true)
+        setTimeout(() => {
+            setAlert(false)
+
+        }, 2000);
         fetchData()
 
     }
@@ -56,6 +62,13 @@ const DeleteFrameWork = () => {
 
         return (
             <>
+                {
+                    alert && <div className="animate-pulse"
+                    >
+
+                        <Alert type={'Danger'} message={'Framework Deleted successfully'}></Alert>
+                    </div>
+                }
                
 
                     <div className=" flex justify-start flex-wrap p-4">
