@@ -1,16 +1,26 @@
 import { useState } from "react"
 import axios from "axios"
-
+import Alert from "@/components/Alert.js";
+import { MyContext } from "@/Context/Context";
+import { useContext } from "react";
 const Contact = () => {
   
     const [name ,setName] =useState('')
     const [email ,setEmail] =useState('')
     const [content ,setContent] =useState('')
-
+    const [alert, setAlert] = useState(false)
+    const { setState, state } = useContext(MyContext);
    
     const submitHandler =async()=>{
       
-        const data = await axios.post('/api/messages/create',{name ,email ,content})
+        const data = await axios.post('/api/messages/create', { name, email, content },{ headers: {
+            Authorization: `Bearer ${state.token}`
+        }})
+        setAlert(true)
+        setTimeout(() => {
+            setAlert(false)
+
+        }, 3000);
 
     }
 
@@ -21,6 +31,12 @@ const Contact = () => {
                 <div className='bg-gradient-to-bl from-indigo-500 via-purple-500 to-pink-500 w-4/12 p-8 rounded-2xl'>
                     <div className='flex justify-evenly'>
                         <div className=''>
+                            {alert && <div className="animate-pulse"
+                            >
+
+                                <Alert type={'success'} message={' Message Successfully'}></Alert>
+                            </div>
+                            }
                             <h1>
 
                            Contact Me

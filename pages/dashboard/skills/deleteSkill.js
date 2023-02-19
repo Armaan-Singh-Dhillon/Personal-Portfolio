@@ -64,7 +64,7 @@ const DeleteSkill = () => {
                     <Alert type={'Danger'} message={'Skill Deleted successfully'}></Alert>
                 </div>
             }
-            <div className="bg-blue-400 flex justify-start flex-wrap p-4">
+            <div className=" flex justify-start flex-wrap p-4">
                 
                 {res.map((el) => {
 
