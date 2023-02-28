@@ -1,4 +1,4 @@
-import { BarGraph } from '../components/Bargraph'
+import { BarGraph } from '@/components/Bargraph';
 
 import Image from 'next/image'
 import axios from 'axios'
@@ -9,7 +9,7 @@ const Skills = () => {
   const [framework, setFramework] = useState([])
 
   const fetchSkill = async () => {
-    const {data} = await axios.get('http://localhost:3000/api/skills/getAll')
+    const { data } = await axios.get('http://localhost:3000/api/skills/getAll')
     setSkills(data.data)
 
   }
@@ -22,8 +22,11 @@ const Skills = () => {
     fetchSkill()
     fetchFramework()
   }, [])
+ 
 
-console.log(skills,framework)
+  
+
+  console.log(skills, framework)
   if (!skills || !framework) {
     return <>
       Loading
@@ -43,15 +46,17 @@ console.log(skills,framework)
         <div className='flex items-center justify-evenly p-8'>
           {skills.map((el) => {
             return <div className='skills-images text-white text-xl flex flex-col items-center'>
+              <div className='h-[10rem]'>
 
-              <Image
-                src={`/img/skills/${el.photo}`}
+                <Image
+                  src={`/img/skills/${el.photo}`}
 
-                width={200}
-                height={200}
-              />
+                  width={200}
+                  height={200}
+                />
+              </div>
 
-              {el.name}
+                {el.name}
             </div>
           })}
         </div>
@@ -63,13 +68,15 @@ console.log(skills,framework)
         <div className='flex items-center justify-evenly flex-wrap p-8'>
           {framework.map((el) => {
             return <div className='skills-images text-white text-xl flex flex-col items-center'>
+              <div className='h-[10rem]'>
 
-              <Image
-                src={`/img/skills/${el.photo}`}
+                <Image
+                  src={`/img/skills/${el.photo}`}
 
-                width={200}
-                height={200}
-              />
+                  width={200}
+                  height={200}
+                />
+              </div>
 
               {el.name}
             </div>
@@ -81,7 +88,32 @@ console.log(skills,framework)
         <div className="text-white flex justify-evenly">
           <div className='bar-graph '>
 
-            <BarGraph ></BarGraph>
+            
+
+            {BarGraph({
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: 'top',
+                },
+                title: {
+                  display: true,
+                  text: 'Chart.js Bar Chart',
+                },
+              },
+            }, {
+              labels:[''],
+              datasets: [
+                {
+                  label: 'Skills',
+                  data: [10],
+                  backgroundColor: 'rgba(177, 79, 196,0.5)',
+
+                },
+
+              ],
+            })}
+            
           </div>
 
         </div>

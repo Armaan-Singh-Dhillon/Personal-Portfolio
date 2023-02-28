@@ -50,6 +50,6 @@ export const data = {
     ],
 };
 
-export function BarGraph() {
+export function BarGraph(options,data) {
     return <Bar options={options} data={data} className='bg-white'  />;
 }
