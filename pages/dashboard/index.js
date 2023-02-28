@@ -6,6 +6,9 @@ import { MyContext } from "@/Context/Context";
 import { useState } from 'react';
 import axios from 'axios';
 import { BarGraph } from '@/components/Bargraph';
+import Image from 'next/image';
+import Loader from '@/components/Loader';
+
 export default function index() {
   const { setState, state } = useContext(MyContext);
 
@@ -14,6 +17,10 @@ export default function index() {
   const fetchData = async () => {
     const { data } = await axios.get('http://localhost:3000/api/skills/bar-chart/getAll')
     setData(data.data)
+    setTimeout(() => {
+      
+      setLoading(false)
+    }, 2000);
   }
 
   useEffect(() => {
@@ -28,6 +35,7 @@ export default function index() {
   const [deletename, setdeletename] = useState('')
   const [points, setpoints] = useState('')
   const [data, setData] = useState([])
+  const [loading , setLoading] =useState(true)
 
   const submitHandler = async () => {
 
@@ -52,8 +60,9 @@ export default function index() {
     fetchData()
 
   }
-  if (!data) {
-    return <h1>Loading</h1>
+  if (loading) {
+    return <Loader></Loader>
+    
   }
   else {
     const bardata = []

@@ -3,11 +3,13 @@ import { BarGraph } from '@/components/Bargraph';
 import Image from 'next/image'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import Loader from '@/components/Loader';
 
 const Skills = () => {
   const [skills, setSkills] = useState([])
   const [framework, setFramework] = useState([])
   const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const fetchSkill = async () => {
     const { data } = await axios.get('http://localhost:3000/api/skills/getAll')
@@ -28,14 +30,16 @@ const Skills = () => {
     fetchFramework()
     fetchBarGraph()
   }, [])
+  if(skills && framework && data ){
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000);
+  }
  
 
-  
-
-  console.log(skills, framework)
-  if (!skills || !framework) {
+  if (loading) {
     return <>
-      Loading
+      <Loader></Loader>
     </>
   }
   else {
