@@ -25,6 +25,7 @@ export default function index() {
 
 
   const [name, setname] = useState('')
+  const [deletename, setdeletename] = useState('')
   const [points, setpoints] = useState('')
   const [data, setData] = useState([])
 
@@ -33,6 +34,19 @@ export default function index() {
     const { data } = await axios.post('http://localhost:3000/api/skills/bar-chart/create', { name, points }, {
       headers: {
         'Authorization': `Bearer ${state.token}`
+      }
+    })
+    fetchData()
+
+  }
+  const deleteHandler = async () => {
+
+    await axios.delete('http://localhost:3000/api/skills/bar-chart/delete', {
+      headers: {
+        Authorization: `Bearer ${state.token}`
+      },
+      data: {
+        deletename
       }
     })
     fetchData()
@@ -117,11 +131,11 @@ export default function index() {
                 name
               </div>
               <div className='m-2'>
-                <input type="text" name="" id="" className='w-full p-2 text-black' onChange={(e) => setname(e.target.value)} />
+                <input type="text" name="" id="" className='w-full p-2 text-black' onChange={(e) => setdeletename(e.target.value)} />
               </div>
-              
+
               <div className='flex justify-evenly '>
-                <button className='bg-purple-600 p-2 m-2' onClick={submitHandler}>Delete</button>
+                <button className='bg-purple-600 p-2 m-2' onClick={deleteHandler}>Delete</button>
               </div>
             </div>
           </div>

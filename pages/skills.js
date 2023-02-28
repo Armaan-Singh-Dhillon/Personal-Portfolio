@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 const Skills = () => {
   const [skills, setSkills] = useState([])
   const [framework, setFramework] = useState([])
+  const [data, setData] = useState([])
 
   const fetchSkill = async () => {
     const { data } = await axios.get('http://localhost:3000/api/skills/getAll')
@@ -18,9 +19,14 @@ const Skills = () => {
     setFramework(data.data)
 
   }
+  const fetchBarGraph=async()=>{
+    const { data } = await axios.get('http://localhost:3000/api/skills/bar-chart/getAll')
+    setData(data.data)
+  }
   useEffect(() => {
     fetchSkill()
     fetchFramework()
+    fetchBarGraph()
   }, [])
  
 
@@ -33,7 +39,12 @@ const Skills = () => {
     </>
   }
   else {
-
+    const bardata = []
+    const labels = []
+    data.map(({ name, points }) => {
+      bardata.push(points)
+      labels.push(name)
+    })
 
     return (
       <>
@@ -90,29 +101,31 @@ const Skills = () => {
 
             
 
-            {BarGraph({
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: 'top',
+            <div className=' w-10/12'>
+              {BarGraph({
+                responsive: true,
+                plugins: {
+                  legend: {
+                    position: 'top',
+                  },
+                  title: {
+                    display: true,
+                    text: 'Skills',
+                  },
                 },
-                title: {
-                  display: true,
-                  text: 'Chart.js Bar Chart',
-                },
-              },
-            }, {
-              labels:[''],
-              datasets: [
-                {
-                  label: 'Skills',
-                  data: [10],
-                  backgroundColor: 'rgba(177, 79, 196,0.5)',
+              }, {
+                labels,
+                datasets: [
+                  {
+                    label: 'Skills',
+                    data: bardata,
+                    backgroundColor: 'rgba(177, 79, 196,0.5)',
 
-                },
+                  },
 
-              ],
-            })}
+                ],
+              })}
+            </div>
             
           </div>
 
