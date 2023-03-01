@@ -30,14 +30,15 @@ const Skills = () => {
     fetchFramework()
     fetchBarGraph()
   }, [])
-  if(skills && framework && data ){
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000);
-  }
+ 
  
 
   if (loading) {
+    if (skills && framework && data) {
+      setTimeout(() => {
+        setLoading(false)
+      }, 2000);
+    }
     return <>
       <Loader></Loader>
     </>

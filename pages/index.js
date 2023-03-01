@@ -41,7 +41,12 @@ export default function Home() {
         </div>
 
         <div className=''>
-          <img src='https://i0.wp.com/www.fegno.com/wp-content/uploads/2022/03/web-development-company-in-kochi.gif' alt="" />
+          <Image
+          src='/img/home/home-gif.gif'
+          width={1000}
+          height={1000}
+          />
+           
           
         </div>
         
@@ -52,7 +57,7 @@ export default function Home() {
       </div>
       <div className='m-4'>
        <Image
-        src={code}
+        src='/img/home/carbon.png'
         width={1500}
         height={1500}
         

@@ -1,15 +1,14 @@
-import profile from '../images/image-about-page.png'
-import institute from '../images/nit.jpg'
+
 import Image from 'next/image'
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
-import school from '../images/school.jpg'
+
 const About = () => {
     return (
         <div className="text-white">
             <div className='flex justify-evenly'>
                 <div>
                     <Image
-                        src={profile}
+                        src='/img/about-page/image-about-page.png'
                         width={400}
                         height={400}
 
@@ -49,7 +48,7 @@ const About = () => {
                     <div className='flex1'>
 
                         <Image
-                            src={institute}
+                            src='/img/about-page/nit.jpg'
                             className='rounded-xl m-4'
                             width={450}
                             height={450}
@@ -76,7 +75,7 @@ const About = () => {
 
 
                     <Image
-                        src={school}
+                        src='/img/about-page/school.jpg'
                         className='rounded-xl h-64 m-4'
                         width={450}
                         height={450}
